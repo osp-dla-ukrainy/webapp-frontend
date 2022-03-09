@@ -22,6 +22,8 @@ import {
 
 import { OtherInput } from '../../core/components/OtherRadioInput/OtherRadioInput';
 
+const phoneRegex = /^[\+\d]\d*$/;
+
 type SelectOption = {
   label: string;
   value?: string | number;
@@ -139,6 +141,7 @@ const formFields: Array<FormField> = [
     label: 'Kod pocztowy',
     type: 'text',
     required: true,
+    helper: 'wypełnienie pola spowoduje wypełnienie kolejnych pól adresowych sugerowanymi wartościami'
   },
   {
     name: 'city',
@@ -312,7 +315,7 @@ const ValidationSchema = Yup.object().shape({
     label: Yup.string(),
     value: Yup.string(),
   }).nullable().required(validationMessages.required),
-  phone: Yup.string().required(validationMessages.required),
+  phone: Yup.string().trim().matches(phoneRegex, 'Zły format numeru telefonu').required(validationMessages.required),
   facebook: Yup.string().url(validationMessages.url).optional(),
   organization: Yup.string().optional(),
   email: Yup.string().email(validationMessages.email).required(validationMessages.required),
