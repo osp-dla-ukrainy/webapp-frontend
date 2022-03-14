@@ -1,6 +1,6 @@
 import { createAction, createReducer } from '@reduxjs/toolkit'
 
-interface AuthState {
+export interface AuthState {
   value: number
 }
 
@@ -8,7 +8,7 @@ const increment = createAction('auth/increment')
 const decrement = createAction('auth/decrement')
 const incrementByAmount = createAction<number>('auth/incrementByAmount')
 
-const initialState = { value: 0 } as AuthState
+const initialState = { value: 0 } as AuthState;
 
 const authReducer = createReducer(initialState, (builder) => {
   builder

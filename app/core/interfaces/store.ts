@@ -1,8 +1,9 @@
 import { AppThunkDispatch } from '../../core/store/store';
+import { AuthState } from '../store/reducers/auth';
 import { ConfigState } from '../store/reducers/config';
 
 export interface RootState {
-  auth: Record<string, any>;
+  auth: AuthState;
   config: ConfigState;
 }
 

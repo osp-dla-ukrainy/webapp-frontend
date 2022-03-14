@@ -38,7 +38,7 @@ export const selectConfigs = (state: RootState) => state.config.configs;
 const configReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(fetchConfig.fulfilled, (state, action) => {
-      state.configs = action.payload;
+      state.configs = action.payload as ConfigState['configs'];
     })
 })
 
